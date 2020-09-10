@@ -1,0 +1,32 @@
+extends layout
+
+block content
+
+  if bids.length
+     table.listing-table.table-dark.table-striped
+      tr
+      th Bid id
+      th Job Id
+      th Job Name
+      th Bidder Name
+      th Bid Amount
+
+      each bid in bids
+        tr
+        td= bid._id
+        td= bid.jobId
+        td= bid.jobName
+        td
+         a(href="/profile/"+bid.bidderId)=bid.bidderName
+        td= bid.bidAmt
+        if flag==1
+          td
+            a(class="btn btn-primary" href="/deletebid/"+bid._id roles="button") Delete
+        else
+          td
+            a(class="btn btn-primary" href="/selectbid/"+bid._id+"/"+bid.jobId roles="button") Select Bid
+  else
+      p No Bids yet :(
+  br
+  br
+  a(class="btn btn-primary" href="/dashboard" roles="button") Return to Dashboard

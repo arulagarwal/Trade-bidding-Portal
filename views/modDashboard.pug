@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  -data = data || {}
+
+   head
+   body
+      div Hey #{userName}, How are you doing today?
+      a(class="btn btn-primary" href="/userSearch" roles="button") Search User
+      br
+      br
+      a(class="btn btn-primary" href="/jobsearch" roles="button") Search Jobs
+      br
+      br
+      a(class="btn btn-primary" href="/dashboard" roles="button") Return to Dashboard
+      br
+      br
+      div Want to log out?
+        a(href="/logout" ) Log Out

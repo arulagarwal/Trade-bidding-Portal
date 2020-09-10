@@ -1,0 +1,37 @@
+extends layout
+
+block content
+
+  if jobs.length
+     table.listing-table.table-dark.table-striped
+      tr
+        th Title
+        th Description
+        th Seller Name
+        th Start date
+        th End Date
+        th Progress
+      each job in jobs
+        tr
+          td= job.title
+          td= job.description
+          td
+           a(href="/profile/"+job.userId)=job.sellerName
+          td= job.startDate
+          td= job.endDate
+          td= job.progress
+          if flag==1
+            td
+              a(class="btn btn-primary" href="/modSeeBids/"+job.userId+"/"+job._id roles="button") See bids
+            if job.userId == userId
+            td
+              a(class="btn btn-primary" href="/deletejob/"+job._id roles="button") Delete
+          else
+            if job.status=="Active" && job.userId!=userId
+              td
+                a(class="btn btn-primary" href="/bidpost/"+job.id roles="button") Bid Now
+  else
+      p No Active Jobs yet :(
+  br
+  br
+  a(class="btn btn-primary" href="/dashboard" roles="button") Return to Dashboard

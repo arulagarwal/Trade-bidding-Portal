@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  -data = data || {}
+  script(src="http://code.jquery.com/jquery-1.9.1.min.js")
+  script(src="javascripts/jquery.validate.js")
+  script(src="javascripts/rnrFormValidation.js")
+
+  if errors
+    ul.my-errors
+      for error in errors
+        li= error.msg
+  br
+  form(action="/rnr/"+jobs._id method="POST" name="rnr-form" class="form-registration")
+    label(for="Title") Title:
+    input(
+      type="text"
+      id="title"
+      name="title"
+      class="form-control"
+      value=data.title
+    )
+
+    label(for="description") Description:
+    input(
+      type="text"
+      id="description"
+      name="description"
+      class="form-control"
+      value=data.description
+    )
+    label(for="rating") Rating
+    input(
+      type="number"
+      id="rating"
+      name="rating"
+      class="form-control"
+      value=data.rating
+      min=0
+      max=5
+    )
+
+    input(
+      type="submit"
+      value="Submit"
+      class="btn btn-lg btn-primary btn-block"
+    )
+    br
+    a(class="btn btn-primary" href="/dashboard" roles="button") Return to Dashboard

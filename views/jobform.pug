@@ -1,0 +1,57 @@
+extends layout
+
+block content
+  -data = data || {}
+  script(src="http://code.jquery.com/jquery-1.9.1.min.js")
+  script(src="javascripts/jquery.validate.js")
+  script(src="javascripts/jobFormValidation.js")
+
+  if errors
+    ul.my-errors
+    for error in errors
+      li=error.msg
+  br
+  form(action="" method="POST" name="job-form" id="job-form" class="form-registration")
+    label(for=title) Title:
+    input(
+      type="text"
+      id="title"
+      name="title"
+      class="form-control"
+      value=data.title
+    )
+
+    lable(for="description") Description:
+    input(
+      type="text"
+      id="description"
+      name="description"
+      class="form-control"
+      value=data.description
+    )
+
+    lable(for="startDate") StartDate:
+    input(
+      type="date"
+      id="startDate"
+      name="startDate"
+      class="form-control"
+      value=data.startDate
+    )
+
+    lable(for="endDate") End Date
+    input(
+      type="date"
+      id="endDate"
+      name="endDate"
+      class="form-control"
+      value=data.endDate
+    )
+
+    input(
+      type="submit"
+      value="Submit"
+      class="btn btn-lg btn-primary btn-block"
+    )
+    br
+    a(class="btn btn-primary" href="/dashboard" roles="button") Return to Dashboard

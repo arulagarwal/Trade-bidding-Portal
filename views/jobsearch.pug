@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  -data = data || {}
+
+  if errors
+    ul.my-errors
+      for error in errors
+        li= error.msg
+
+  form(action="jobsearch" method="POST" class="form-registration")
+    label(for="title") Enter Job Name:
+    input(
+      type="text"
+      id="title"
+      name="title"
+      class="form-control"
+      required
+      value=data.title
+    )
+
+
+    input(
+      type="submit"
+      value="Submit"
+      class="btn btn-lg btn-primary btn-block"
+    )
+    br
+    a(class="btn btn-primary" href="/dashboard" roles="button") Return to Dashboard

@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  -data = data || {}
+  script(src="http://code.jquery.com/jquery-1.9.1.min.js")
+  script(src="javascripts/jquery.validate.js")
+  script(src="javascripts/signinValidation.js")
+
+  if errors
+    ul.my-errors
+      for error in errors
+        li= errors.msg
+  if message
+    =message
+  form(action="login" method="POST" id="sign-form" name="signin-form" class="form-registration")
+    label(for="name") Username:
+    input(
+      type="text"
+      id="name"
+      name="name"
+      class="form-control"
+      value=data.name
+    )
+    
+    label(for="password") Password:
+    input(
+      type="password"
+      id="password"
+      name="password"
+      class="form-control"
+      value=data.password
+    )
+
+
+    input(
+      type="submit"
+      value="Sign In"
+      class="btn btn-lg btn-primary btn-block"
+    )
+    br
+    div New User?
+    a(href=".") register

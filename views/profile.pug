@@ -1,0 +1,40 @@
+extends layout
+
+block content
+
+  h5="Name: "+registrations[0].name
+  h5 Email:
+   a(href="mailto:"+registrations[0].email)=registrations[0].email
+  h5="Date of Joining: "+registrations[0].registrationDate
+  br
+  br
+  if rnrs.length
+    table.listing-table.table-dark.table-striped
+      tr
+        th Title
+        th Reviewer Name
+        th Seller Name
+        th Buyer Name
+        th Job Name
+        th Description
+        th rating
+      each rnr in rnrs
+        tr
+          td= rnr.title
+          td
+           a(href="/profile/"+rnr.reviewerId)=rnr.reviewerName
+          td
+           a(href="/profile/"+rnr.sellerId)=rnr.sellerName
+          td
+           a(href="/profile/"+rnr.buyerId)=rnr.buyerName
+          td= rnr.jobName
+          td= rnr.description
+          td= rnr.rating
+          if flag==1
+            td
+              a(class="btn btn-primary" href="/deleteReview/"+rnr._id role="button") Delete
+
+  else
+    p No reviews yet :(
+  br
+  a(class="btn btn-primary" href="/dashboard" roles="button") Return to Dashboard

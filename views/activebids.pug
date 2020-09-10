@@ -1,0 +1,31 @@
+extends layout
+
+block content
+
+  if bids.length
+     table.listing-table.table-dark.table-striped
+      tr
+        th Bid id
+        th Job Name
+        th Seller Name
+        th Bidder Name
+        th Bid Amount
+
+      each bid in bids
+        tr
+          td= bid._id
+          td= bid.jobName
+          td
+           a(href="/profile/"+bid.sellerId)=bid.sellerName
+          td
+           a(href="/profile/"+bid.bidderId)=bid.bidderName
+          td= bid.bidAmt
+          td
+            a(class="btn btn-primary" href="mailto:"+bid.sellerEmail roles="button") Contact Seller
+          td
+            a(class="btn btn-primary" href="rnr/"+bid.jobId roles="button") Write a review & End Job
+  else
+      p No Bids yet :(
+  br
+  br
+  a(class="btn btn-primary" href="/dashboard" roles="button") Return to Dashboard

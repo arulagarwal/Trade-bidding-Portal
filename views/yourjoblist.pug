@@ -1,0 +1,28 @@
+extends layout
+
+block content
+
+  if jobs.length
+     table.listing-table.table-dark.table-striped
+      tr
+        th Title
+        th Description
+        th Start date
+        th End Date
+        th Status
+      each job in jobs
+        tr
+          td= job.title
+          td= job.description
+          td= job.startDate
+          td= job.endDate
+          td= job.status
+          td
+            a(class="btn btn-primary" href="/jobbids/"+job._id roles="button") See Bids
+          td
+            a(class="btn btn-primary" href="/deletejob/"+job._id roles="button") Delete
+
+  else
+      p No Active Jobs yet :(
+  br
+  a(class="btn btn-primary" href="/dashboard" roles="button") Return to Dashboard

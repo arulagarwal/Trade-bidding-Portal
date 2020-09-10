@@ -1,0 +1,51 @@
+const mongoose = require('mongoose');
+const rnrSchema = new mongoose.Schema({
+  title:{
+    type:String,
+    trim:true,
+  },
+  description:{
+    type:String,
+    trim:true,
+  },
+  rating:{
+    type:Number,
+  },
+  jobId:{
+    type:String,
+    trim:true,
+  },
+  jobName:{
+    type:String,
+    trim:true,
+  },
+  sellerId:{
+    type:String,
+    trim:true,
+  },
+  sellerName:{
+    type:String,
+    trim:true,
+  },
+  buyerId:{
+    type:String,
+    trim:true,
+  },
+  buyerName:{
+    type:String,
+    trim:true,
+  },
+  reviewerId:{
+    type:String,
+    trim:true,
+  },
+  reviewerName:{
+    type:String,
+    trim:true,
+  },
+  reviewDate:{
+    type:Date,
+    trim:true,
+  }
+});
+module.exports = mongoose.model('Rnr',rnrSchema);

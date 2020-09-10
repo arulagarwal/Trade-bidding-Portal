@@ -1,0 +1,28 @@
+extends layout
+
+block content
+
+  if jobs.length
+     table.listing-table.table-dark.table-striped
+      tr
+        th Title
+        th Description
+        th Bidder Name
+        th Bid date
+        th Progress
+      each job in jobs
+        tr
+          td= job.title
+          td= job.description
+          td
+           a(href="/profile/"+job.bidderId)=job.bidderName
+          td= job.bidDate
+          td= job.progress
+          td
+            a(class="btn btn-primary" href="mailto:"+job.bidderEmail roles="button") Contact Bidder
+          td
+            a(class="btn btn-primary" href="/rnr/"+job._id roles="button") Write Review & End Job
+  else
+      p No Active Jobs yet :(
+  br
+  a(class="btn btn-primary" href="/dashboard" roles="button") Return to Dashboard

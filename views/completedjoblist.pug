@@ -1,0 +1,31 @@
+extends layout
+
+block content
+
+  if jobs.length
+     table.listing-table.table-dark.table-striped
+      tr
+        th Title
+        th Description
+        th Bidder Name
+        th Bid date
+        th Progress
+      each job in jobs
+        tr
+          td= job.title
+          td= job.description
+          td
+           a(href="/profile/"+job.bidderId)=job.bidderName
+          td= job.bidDate
+          td= job.progress
+          td
+            a(class="btn btn-primary" href="mailto:"+job.bidderEmail roles="button") Contact Bidder
+          if job.paymentStatus== "Unpaid"
+            td
+              a(class="btn btn-primary" href="/pay/"+job._id roles="button") Pay
+          td
+            a(class="btn btn-primary" href="/sellerrnr/"+job._id roles="button") Write Review
+  else
+      p No Active Jobs yet :(
+  br
+  a(class="btn btn-primary" href="/dashboard" roles="button") Return to Dashboard

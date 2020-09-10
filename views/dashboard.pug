@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  -data = data || {}
+
+   head
+   body
+      div Hey #{userName}, How are you doing today?
+      br
+      a(class="btn btn-primary" href="/profile/"+userId role=button) See Profile
+      =" "
+      a(class="btn btn-primary" href="/changepassword" role=button) Change Password
+      br
+      br
+      a(class="btn btn-primary" href="/jobpost" role="button") Post Job
+      =" "
+      a(class="btn btn-primary" href="/yourjobs" roles="button") Active Jobs
+      =" "
+      a(class="btn btn-primary" href="/activejobs" roles="button") Ongoing Jobs
+      =" "
+      a(class="btn btn-primary" href="/completedjob" roles="button") Completed Jobs
+      br
+      br
+      a(class="btn btn-primary" href="/jobsearch" roles="button") Search for Jobs
+      =" "
+      a(class="btn btn-primary" roles="button" href="/activebids") Jobs Assigned to You
+      =" "
+      a(class="btn btn-primary" href="/yourbids" roles="button") Your Bids
+      =" "
+      br
+      br
+      if flag==2
+        a(class="btn btn-primary" href="/modDashboard" role="button") Moderator Controls
+        br
+        br
+      div Want to log out? 
+        a(href="/logout" ) Log Out

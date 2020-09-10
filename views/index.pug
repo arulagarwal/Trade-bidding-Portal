@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+  if registrations.length
+    table.listing-table.table-dark.table-striped
+      tr
+        th Name
+        th Id
+        th Registration Date
+        th Balance
+      each registration in registrations
+        tr
+          td
+           a(href="/profile/"+registration._id)=registration.name
+          td= registration._id
+          td= registration.registrationDate
+          td= registration.balance
+          td
+            a(class="btn btn-primary" href="mailto:"+registration.email role="button") Contact user
+          td
+            a(class="btn btn-primary" href="/deleteuser/"+registration._id role="button") Delete User
+
+  else
+    p No registrations yet :(
